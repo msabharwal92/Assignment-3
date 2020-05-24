@@ -1,0 +1,77 @@
+ Write a function to compute 5/0 and use try/except to catch the exceptions.
+ def divide():
+    return 5/0
+
+try:
+    divide()
+except ZeroDivisionError as ze:
+    print("A no. divided by zero results infinity")
+except:
+    print("Any other expression")
+    
+    2) Implement a Python program to generate all sentences where subject is in ["Americans", "Indians"] and verb is in ["Play", "watch"] and the object is in ["Baseball","cricket"].
+
+Hint: Subject,Verb and Object should be declared in the program as shown below.
+
+subjects=["Americans ","Indians"]
+
+verbs=["play","watch"]
+
+objects=["Baseball","Cricket"]
+
+Output should come as below:
+
+Americans play Baseball.
+
+Americans play Cricket.
+
+Americans watch Baseball.
+
+Americans watch Cricket.
+
+Indians play Baseball.
+
+Indians play Cricket.
+
+Indians watch Baseball.
+
+Indians watch Cricket.
+
+subjects = ["Americans" , "Indians"]
+verbs = ["play" , "watch"]
+objects = ["Baseball" , "Cricket"]
+​
+syntax = [(sub+' '+vrb+' '+' '+obj+'.') for sub in subjects for vrb in verbs for obj in objects]
+for syn in syntax:
+    print(syn)
+Americans play  Baseball.
+Americans play  Cricket.
+Americans watch  Baseball.
+Americans watch  Cricket.
+Indians play  Baseball.
+Indians play  Cricket.
+Indians watch  Baseball.
+Indians watch  Cricket.
+​
+Task 2
+1)Write a function so that the columns of the output matrix are powers of the input vector.
+
+The order of the powers is determined by the increasing boolean argument. Specifically, when increasing is False, the i-th output column is the input vector raised element-wise to the power of N - i - 1.
+
+HINT: Such a matrix with a geometric progression in each row is named for Alexandre- Theophile Vandermonde.
+
+import numpy as np
+​
+def gen_vender_matrix(invector, n, increasing=False):
+    if not increasing:
+        matrx = np.array([x**(n-i-1) for x in invector for i in range(n)]).reshape(invector.size,n)
+    else:
+        matrx = np.array([x**i for x in invector for i in range(n)]).reshape(invector.size,n)
+    
+    return matrx
+    
+gen_vender_matrix(np.array([1,2,3,4]),4,increasing=False)
+array([[ 1,  1,  1,  1],
+       [ 8,  4,  2,  1],
+       [27,  9,  3,  1],
+       [64, 16,  4,  1]])
